@@ -13,6 +13,16 @@ body {
   font-family: monospace;
 }
 
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: .5rem;
+  margin-bottom: 1.5rem;
+  color: green;
+  border-bottom: 2px solid green;
+}
+
 .wrapper {
   max-width: 50rem;
   height: 100%;
