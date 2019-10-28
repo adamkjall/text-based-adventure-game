@@ -12,7 +12,8 @@ export const playMusic = () => {
   sound.loop = true;
   sound.volume = 0.5;
   sound.type = "audio/wav";
-  sound.play();
+  sound.play().catch(error => console.log(error));
+  )
 };
 
 /**
@@ -41,7 +42,7 @@ const toggleMusic = e => {
 export const playChoiceSound = e => {
   menuSound.currentTime = 0;
   sound.type = "audio/wav";
-  menuSound.play();
+  menuSound.play().catch(error => console.log(error));;
 };
 
 // Add eventlistener to the sound on off checkbox
