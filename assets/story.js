@@ -1,13 +1,14 @@
 export const story = {
   start: {
-    message: "What to do?",
+    message:
+      "Start message",
     choices: [
       {
-        text: "Do nothing",
+        text: "Do something",
         next: "start"
       },
       {
-        text: "Go out",
+        text: "Do nothing",
         next: "outside"
       }
     ]
@@ -16,13 +17,13 @@ export const story = {
     message: "It's a sunny day",
     choices: [
       {
-        text: "Put on shades",
-        next: ""
+        text: "Do something else",
+        next: "park"
       },
       {
-        text: "",
-        next: "park"
+        text: "Do nothing else",
+        next: "outside"
       }
     ]
   }
-}
+};
