@@ -1,4 +1,4 @@
-import "./audio.js";
+import { playChoiceSound } from "./audio.js";
 import { story } from "../assets/story.js";
 
 /* Elements */
@@ -22,9 +22,8 @@ let state = {};
  */
 const startGame = () => {
   state = initialState;
-  
-    showNode(state.node);
-  
+
+  showNode(state.node);
 };
 
 /**
@@ -32,13 +31,12 @@ const startGame = () => {
  * @param {{}} choice
  */
 const selectChoice = choice => {
-    const node = story[choice.next];
-    showNode(node)
-    
+  const node = story[choice.next];
+  showNode(node);
 };
 
 const showNode = node => {
-  if(!node) return;
+  if (!node) return;
   // Remove buttons
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);
@@ -49,21 +47,24 @@ const showNode = node => {
     ...state,
     node,
     messageToShow: node.message
-  } 
-  
+  };
+
   // Create choice buttons with onClicks to selectChoice
   state.node.choices.forEach(choice => {
     const button = document.createElement("button");
     button.classList.add("btn");
     button.innerHTML = choice.text;
-    button.addEventListener("click", () => selectChoice(choice));
+    button.addEventListener("click", () => {
+      selectChoice(choice);
+      playChoiceSound();
+    });
     // append each button to the choicesElement
     choicesElement.appendChild(button);
   });
-  
+
   clearMessage();
   displayMessage();
-}
+};
 
 /**
  * Displays the current game message with a
@@ -104,6 +105,5 @@ const toggleTypewriter = e => {
 };
 
 typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);
-
 
 startGame();
