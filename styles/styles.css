@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  
+  color: rgb(241, 239, 239);
+  background: radial-gradient(rgb(0, 0, 0) 20%, rgb(29, 24, 24), rgb(43, 42, 42)) no-repeat;
+
+  font-family: monospace;
+}
+
+.wrapper {
+  max-width: 50rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+

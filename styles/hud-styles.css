@@ -1,0 +1,176 @@
+.hud {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+  /* border: 1px solid pink; */
+}
+
+.player-info {
+  /* border: 1px solid greenyellow; */
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  min-width: 18rem;
+}
+
+.avatar-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  background: linear-gradient(rgb(113, 0, 148), rgb(21, 0, 32));
+  box-shadow: 0 0 5px 2px rgba(62, 207, 243, 0.84);
+  border-radius: 10%;
+
+  transition: all 0.3s;
+  z-index: 1; /* make sure avatar shadow is on top of hp/mp bars */
+}
+.avatar {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+.level {
+  grid-column: 2;
+  grid-row: 4;
+  margin-bottom: -.5rem;
+  margin-top: .5rem;
+  display: grid;
+  place-items: center center;
+
+  text-align: center;;
+  background: #18171b;
+  color: rgb(62, 207, 243);
+  border-radius: 10%;
+  box-shadow: 0 0 4px 1px rgba(62, 207, 243, 0.774);
+}
+
+.stats-container {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.name {
+  padding: 0 0 0.1rem 0.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: start;
+}
+.hp,
+.mp {
+  border-top: 2px solid rgb(22, 22, 22);
+  border-bottom: 2px solid rgb(22, 22, 22);
+  border-right: 2px solid rgb(22, 22, 22);
+  padding: 0.4rem;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s;
+}
+.hp {
+  background: linear-gradient(
+    to top,
+    rgb(177, 9, 46),
+    rgb(206, 11, 53),
+    rgb(177, 9, 46)
+  );
+
+  border-top-right-radius: 0.8rem;
+}
+.mp {
+  border-top: none;
+  background: linear-gradient(
+    to top,
+    rgb(47, 107, 146),
+    rgb(66, 151, 207),
+    rgb(47, 107, 146)
+  );
+
+  border-bottom-right-radius: 0.8rem;
+}
+
+.avatar-container:hover,
+.hp:hover,
+.mp:hover {
+  filter: brightness(115%);
+}
+
+.options {
+  padding: 0.5rem;
+  font-weight: bold;
+  border: 2px dashed green;
+  color: green;
+}
+.options h3 {
+  border-bottom: 2px solid green;
+}
+.options label {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding-right: 1.2rem;
+  margin-top: .3rem;
+}
+
+/* Hide the browser's default checkbox */
+.options input {
+  position: absolute;
+  opacity: 0;
+  outline: none;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.options .checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  height: 1rem;
+  width: 1rem;
+  
+  cursor: pointer;
+  border: 1.5px solid green;
+
+  transition: all .2s;
+}
+
+.options .checkmark:hover {
+  filter: brightness(140%);
+  /* transform: scale(1.05); */
+}
+
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+label .checkmark:after {
+  left: 4px;
+  top: 0px;
+  width: 3px;
+  height: 7px;
+  border: solid green;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

@@ -1,0 +1,22 @@
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  font-family: monospace;
+  color: rgb(240, 240, 240);
+  background: linear-gradient(to bottom, rgb(91, 14, 124), rgb(35, 2, 39));
+  padding: .5rem 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: .4rem;
+  transition: all 0.1s;
+}
+
+.btn:hover {
+  filter: brightness(140%);
+}

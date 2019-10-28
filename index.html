@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/hud-styles.css" />
+    <link rel="stylesheet" href="./styles/prompt-styles.css" />
+    <link rel="stylesheet" href="./styles/choices-styles.css" />
+    <script defer src="./scripts/game.js" type="module"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="hud">
+        <section class="player-info">
+          <div class="avatar-container">
+            <img
+              class="avatar"
+              src="./assets/images/executioner_featured.png"
+              alt="Avatar"
+            />
+            <div class="level">7</div>
+          </div>
+          <div class="stats-container">
+            <h4 class="name">Name</h4>
+            <div class="hp">100/100 HP</div>
+            <div class="mp">100/100 MP</div>
+          </div>
+        </section>
+        <section class="options">
+          <h3>Options</h3>
+          <label
+            >Sound on/off
+            <input type="checkbox"/>
+            <span class="checkmark"></span
+          ></label>
+        </section>
+      </section>
+
+      <section class="prompt">
+        <p class="prompt-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi
+          corporis asperiores beatae molestiae, repudiandae enim doloremque
+          eligendi magnam animi inventore deleniti id saepe distinctio amet est
+          facere aliquam nam illo.
+        </p>
+      </section>
+
+      <section class="choices">
+        <button class="btn">Go home</button>
+        <button class="btn">Go back</button>
+        <button class="btn">Use an ability</button>
+      </section>
+    </div>
+  </body>
 </html>
