@@ -16,9 +16,6 @@
 
 .avatar-container {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
 
   background: linear-gradient(rgb(113, 0, 148), rgb(21, 0, 32));
   box-shadow: 0 0 5px 2px rgba(62, 207, 243, 0.84);
@@ -28,17 +25,17 @@
   z-index: 1; /* make sure avatar shadow is on top of hp/mp bars */
 }
 .avatar {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
   width: 6rem;
   height: 6rem;
   object-fit: cover;
 }
 .level {
-  grid-column: 2;
-  grid-row: 4;
-  margin-bottom: -.5rem;
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: .5rem;
+  padding: 0.2rem 0.5rem;
   display: grid;
   place-items: center center;
 

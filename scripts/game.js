@@ -3,19 +3,18 @@ import { story } from "../assets/story.js";
 
 /* Elements */
 const textElement = document.querySelector(".prompt .prompt-text");
-const choiceButtonsElement = document.querySelectorAll(".choices .btn");
 const typeWriterCheckboxElement = document.querySelector(
   ".options .typewriter"
 );
 const choicesElement = document.querySelector(".choices");
 
-/* The game state */
 const initialState = {
   node: story.start,
   messageToShow: story.start.message,
   applyTypewriter: true
 };
 
+/* The game state */
 let state = {};
 
 /**
@@ -24,35 +23,49 @@ let state = {};
 const startGame = () => {
   state = initialState;
   
- 
-    while (choicesElement.firstChild) {
-      choicesElement.removeChild(choicesElement.firstChild);
-    }
-    displayMessage();
-
-    state.node.choices.forEach(node => {
-      const button = document.createElement("button");
-      button.classList.add("btn");
-      button.innerHTML = node.text;
-      button.addEventListener("click", () => {
-        state.node = story[node.next];
-        state.messageToShow = story[node.next].message;
-        clearMessage();
-        displayMessage();
-        
-      });
-      choicesElement.appendChild(button);
-    });
+    showNode(state.node);
   
 };
 
 /**
  *
- * @param {*} choice
+ * @param {{}} choice
  */
-const selectChoice = e => {
-  console.log(e);
+const selectChoice = choice => {
+    const node = story[choice.next];
+    showNode(node)
+    
 };
+
+const showNode = node => {
+  if(!node) return;
+  // Remove buttons
+  while (choicesElement.firstChild) {
+    choicesElement.removeChild(choicesElement.firstChild);
+  }
+
+  // update state
+  state = {
+    ...state,
+    node,
+    messageToShow: node.message
+  } 
+  console.log(state);
+  
+  
+  // Create choice buttons with onClicks to selectChoice
+  state.node.choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.classList.add("btn");
+    button.innerHTML = choice.text;
+    button.addEventListener("click", () => selectChoice(choice));
+    // append each button to the choicesElement
+    choicesElement.appendChild(button);
+  });
+  
+  clearMessage();
+  displayMessage();
+}
 
 /**
  * Displays the current game message with a
@@ -93,8 +106,6 @@ const toggleTypewriter = e => {
 };
 
 typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);
-choiceButtonsElement.forEach(button =>
-  button.addEventListener("click", selectChoice)
-);
+
 
 startGame();

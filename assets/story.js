@@ -5,11 +5,11 @@ export const story = {
     choices: [
       {
         text: "Do something",
-        next: "start"
+        next: "outside"
       },
       {
         text: "Do nothing",
-        next: "outside"
+        next: "start"
       }
     ]
   },
@@ -23,6 +23,10 @@ export const story = {
       {
         text: "Do nothing else",
         next: "outside"
+      },
+      {
+        text: "Go home",
+        next: "start"
       }
     ]
   }
