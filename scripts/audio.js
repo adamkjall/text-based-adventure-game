@@ -1,9 +1,9 @@
 const creepyAmbience = [
-  new Audio("../assets/sounds/creepy-vocal-ambience.wav"),
-  new Audio("../assets/sounds/creepy-soundscape.wav")
+  new Audio("assets/sounds/creepy-vocal-ambience.wav"),
+  new Audio("assets/sounds/creepy-soundscape.wav")
 ];
 const sound = creepyAmbience[0];
-const menuSound = new Audio("../assets/sounds/menu.wav");
+const menuSound = new Audio("assets/sounds/menu.wav");
 
 /**
  * 
@@ -13,7 +13,6 @@ export const playMusic = () => {
   sound.volume = 0.5;
   sound.type = "audio/wav";
   sound.play().catch(error => console.log(error));
-  )
 };
 
 /**
@@ -42,7 +41,7 @@ const toggleMusic = e => {
 export const playChoiceSound = e => {
   menuSound.currentTime = 0;
   sound.type = "audio/wav";
-  menuSound.play().catch(error => console.log(error));;
+  menuSound.play().catch(error => console.log(error));
 };
 
 // Add eventlistener to the sound on off checkbox
