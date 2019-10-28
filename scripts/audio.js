@@ -11,6 +11,7 @@ const menuSound = new Audio("../assets/sounds/menu.wav");
 export const playMusic = () => {
   sound.loop = true;
   sound.volume = 0.5;
+  sound.type = "audio/wav";
   sound.play();
 };
 
@@ -39,6 +40,7 @@ const toggleMusic = e => {
  */
 export const playChoiceSound = e => {
   menuSound.currentTime = 0;
+  sound.type = "audio/wav";
   menuSound.play();
 };
 
