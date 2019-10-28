@@ -24,11 +24,13 @@
   transition: all 0.3s;
   z-index: 1; /* make sure avatar shadow is on top of hp/mp bars */
 }
+
 .avatar {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
 }
+
 .level {
   position: absolute;
   bottom: -5%;
@@ -46,6 +48,7 @@
   box-shadow: 0 0 4px 1px rgba(62, 207, 243, 0.774);
 }
 
+/* STATS */
 .stats-container {
   height: 100%;
 
@@ -53,12 +56,14 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .name {
   padding: 0 0 0.1rem 0.5rem;
   margin: 0;
   font-size: 1.2rem;
   text-align: start;
 }
+
 .hp,
 .mp {
   border-top: 2px solid rgb(22, 22, 22);
@@ -69,6 +74,7 @@
   text-align: center;
   transition: all 0.3s;
 }
+
 .hp {
   background: linear-gradient(
     to top,
@@ -79,6 +85,7 @@
 
   border-top-right-radius: 0.8rem;
 }
+
 .mp {
   border-top: none;
   background: linear-gradient(
@@ -97,6 +104,7 @@
   filter: brightness(115%);
 }
 
+/* OPTIONS */
 .options {
   padding: 0.5rem;
   font-weight: bold;
@@ -144,10 +152,7 @@
 
 .options .checkmark:hover {
   filter: brightness(140%);
-  /* transform: scale(1.05); */
-}
-
-
+ }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {

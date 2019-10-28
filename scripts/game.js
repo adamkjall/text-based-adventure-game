@@ -50,8 +50,6 @@ const showNode = node => {
     node,
     messageToShow: node.message
   } 
-  console.log(state);
-  
   
   // Create choice buttons with onClicks to selectChoice
   state.node.choices.forEach(choice => {

@@ -8,7 +8,7 @@ body {
   height: 100vh;
   
   color: rgb(241, 239, 239);
-  background: radial-gradient(rgb(0, 0, 0) 20%, rgb(29, 24, 24), rgb(43, 42, 42)) no-repeat;
+  background: radial-gradient(rgb(0, 0, 0) 20%, rgb(19, 15, 15), rgb(27, 27, 27)) no-repeat;
 
   font-family: monospace;
 }
@@ -28,5 +28,9 @@ h1 {
   height: 100%;
   margin: 0 auto;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
