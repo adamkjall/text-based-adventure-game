@@ -1,9 +1,9 @@
 const creepyAmbience = [
-  new Audio("/assets/sounds/creepy-vocal-ambience.wav"),
-  new Audio("/assets/sounds/creepy-soundscape.wav")
+  new Audio("./assets/sounds/creepy-vocal-ambience.wav"),
+  new Audio("./assets/sounds/creepy-soundscape.wav")
 ];
 const music = creepyAmbience[0];
-const menuSound = new Audio("/assets/sounds/menu.wav");
+const menuSound = new Audio("./assets/sounds/menu.wav");
 
 /**
  * 
