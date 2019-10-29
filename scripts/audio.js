@@ -1,25 +1,25 @@
 const creepyAmbience = [
-  new Audio("assets/sounds/creepy-vocal-ambience.wav"),
-  new Audio("assets/sounds/creepy-soundscape.wav")
+  new Audio("/assets/sounds/creepy-vocal-ambience.wav"),
+  new Audio("/assets/sounds/creepy-soundscape.wav")
 ];
-const sound = creepyAmbience[0];
-const menuSound = new Audio("assets/sounds/menu.wav");
+const music = creepyAmbience[0];
+const menuSound = new Audio("/assets/sounds/menu.wav");
 
 /**
  * 
  */
 export const playMusic = () => {
-  sound.loop = true;
-  sound.volume = 0.2;
-  sound.type = "audio/wav";
-  sound.play().catch(error => console.log(error));
+  music.loop = true;
+  music.volume = 0.2;
+  music.type = "audio/wav";
+  music.play().catch(error => console.log(error));
 };
 
 /**
  * 
  */
 export const pauseMusic = () => {
-  sound.pause();
+  music.pause();
 };
 
 /**

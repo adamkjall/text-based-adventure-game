@@ -56,7 +56,7 @@ const showNode = node => {
     button.innerHTML = choice.text;
     button.addEventListener("click", () => {
       selectChoice(choice);
-      playChoiceSound();
+      // playChoiceSound(); // click sound effect
     });
     // append each button to the choicesElement
     choicesElement.appendChild(button);
