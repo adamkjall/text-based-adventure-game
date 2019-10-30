@@ -1,6 +1,6 @@
 @media (max-width: 500px) {
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .start {
@@ -29,6 +29,7 @@
   }
 
   .prompt {
-    height: 10rem;
+    max-height: 12rem;
+    padding: 0.5rem;
   }
 }

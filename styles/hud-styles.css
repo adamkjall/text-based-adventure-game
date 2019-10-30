@@ -3,11 +3,9 @@
   justify-content: space-between;
 
   margin-top: 1rem;
-  /* border: 1px solid pink; */
 }
 
 .player-info {
-  /* border: 1px solid greenyellow; */
   display: grid;
   grid-template-columns: auto 1fr;
 
@@ -18,8 +16,11 @@
   position: relative;
   width: 6rem;
 
-  background: linear-gradient(rgb(113, 0, 148), rgb(21, 0, 32));
+  /* background: linear-gradient(rgb(113, 0, 148), rgb(21, 0, 32)); */
+  background: linear-gradient(rgb(7, 124, 124), rgb(21, 0, 32));
   box-shadow: 0 0 5px 2px rgba(62, 207, 243, 0.84);
+  /* box-shadow: 0 0 5px 2px rgba(7, 128, 7, 0.84); */
+  /* box-shadow: 0 0 5px 2px rgba(211, 193, 193, 0.671); */
   border-radius: 10%;
 
   transition: all 0.3s;
@@ -61,7 +62,7 @@
 .name {
   padding: 0 0 0.1rem 0.5rem;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: start;
 }
 
@@ -83,7 +84,7 @@
     rgb(206, 11, 53),
     rgb(177, 9, 46)
   );
-
+  filter: grayscale(30%);
   border-top-right-radius: 0.8rem;
 }
 
@@ -94,8 +95,9 @@
     rgb(47, 107, 146),
     rgb(66, 151, 207),
     rgb(47, 107, 146)
-  );
-
+    );
+    
+    filter: grayscale(30%);
   border-bottom-right-radius: 0.8rem;
 }
 

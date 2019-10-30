@@ -60,7 +60,7 @@ const showNode = node => {
   // Create choice buttons with onClicks to selectChoice
   state.node.choices.forEach(choice => {
     const button = document.createElement("button");
-    button.classList.add("btn");
+    button.classList.add("start-button");
     button.innerHTML = choice.text;
     button.addEventListener("click", () => {
       if(!state.messageToShow) {

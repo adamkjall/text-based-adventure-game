@@ -43,14 +43,18 @@
 
 .start-button {
   font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
   color: green;
   background: black;
+  box-shadow: 2px 2px 7px 0px green;
+
   border: 2px solid green;
   padding: .8rem 1rem;
+  
   outline: none;
   cursor: pointer;
   transition: all .2s;
-  text-transform: uppercase;
 }
 
 .start-button:hover {
