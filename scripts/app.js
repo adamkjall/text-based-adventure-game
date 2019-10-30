@@ -1,23 +1,39 @@
 import { startGame } from "./game.js";
 
 const startElement = document.querySelector(".start");
-const inputElement = document.querySelector("input.player-name");
+const inputElement = document.querySelector(".start input.player-name");
+const errorMessageElement = document.querySelector(".start .error-message")
 
-/**
- * Checks the given name input and if it's a valid name
- * then start the game
- * @param {event} e
- */
-const checkInput = e => {
+const start = e => {
   e.preventDefault(); // prevent page reload
-  const input = inputElement.value; // save the input
-  inputElement.value = ""; // clear the input
+  const input = inputElement.value;
 
-  const validInput = input;
-  if (validInput) {
-    startElement.classList.add("hide")
-    startGame(input);
+  if (!validInput(input)) {
+    errorMessageElement.innerText = "Name is too long"
+    return;
   }
+
+  startElement.classList.add("hide");
+  const playerName = capitalize(input);
+  startGame(playerName);
+  inputElement.value = ""; // clear the input
 };
 
-startElement.addEventListener("submit", checkInput);
+const validInput = input => input.length < 16;
+
+/**
+ *  Capitalize every word in a given string
+ * @param {string} str
+ */
+const capitalize = str => {
+  const words = str.split(" ");
+  words.forEach((word, i) => {
+    let uppercaseFirstLetter = word.charAt(0).toUpperCase();
+    let stringWithoutFirstLetter = word.slice(1);
+    words[i] = uppercaseFirstLetter + stringWithoutFirstLetter;
+  });
+  return words.join(" ");
+};
+
+// inputElement.addEventListener("input", checkInput);
+startElement.addEventListener("submit", start);
