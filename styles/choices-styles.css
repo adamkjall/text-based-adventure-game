@@ -7,6 +7,7 @@
 
 .btn {
   font-family: monospace;
+  font-size: .7rem;
   color: rgb(240, 240, 240);
   background: linear-gradient(to bottom, rgb(91, 14, 124), rgb(35, 2, 39));
   padding: .8rem 1rem;
