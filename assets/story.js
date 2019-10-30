@@ -11,7 +11,7 @@ export const story = {
       {
         text: "Undersök saken",
         next: "undersök"
-      }
+      },
     ]
   },
   vanligt: {

@@ -1,38 +1,44 @@
 import { playChoiceSound } from "./audio.js";
 import { story } from "../assets/story.js";
+import Player from "./player.js";
 
 /* Elements */
+const gameElement = document.querySelector(".game");
 const textElement = document.querySelector(".prompt .prompt-text");
 const typeWriterCheckboxElement = document.querySelector(
   ".options .typewriter"
 );
 const choicesElement = document.querySelector(".choices");
 
+/* Player stats elements */
+const nameElement = document.querySelector(".player-info .name");
+const hpElement = document.querySelector(".player-info .hp");
+const mpElement = document.querySelector(".player-info .mp");
+const levelElement = document.querySelector(".player-info .level");
+
 const initialState = {
   node: story.start,
   messageToShow: story.start.message,
-  applyTypewriter: true
+  applyTypewriter: true,
+  intervalId: ""
 };
 
 /* The game state */
 let state = {};
 
-/**
- *
- */
-const startGame = () => {
-  state = initialState;
+export const startGame = name => {
+  const player = Player(name);
+  
+  // Set the state of the game
+  state = { ...initialState, player };
 
+  // Show the game
+  gameElement.classList.remove("hide");
+  
+  // Sets the html elements to show the player info
+  updatePlayer();
+  // Show first node
   showNode(state.node);
-};
-
-/**
- *
- * @param {{}} choice
- */
-const selectChoice = choice => {
-  const node = story[choice.next];
-  showNode(node);
 };
 
 const showNode = node => {
@@ -49,21 +55,35 @@ const showNode = node => {
     messageToShow: node.message
   };
 
+  updatePlayer();
+
   // Create choice buttons with onClicks to selectChoice
   state.node.choices.forEach(choice => {
     const button = document.createElement("button");
     button.classList.add("btn");
     button.innerHTML = choice.text;
     button.addEventListener("click", () => {
-      selectChoice(choice);
+      if(!state.messageToShow) {
+        selectChoice(choice);
       // playChoiceSound(); // click sound effect
+      }
     });
     // append each button to the choicesElement
     choicesElement.appendChild(button);
   });
 
+  clearInterval(state.intervalId);
   clearMessage();
   displayMessage();
+};
+
+/**
+ *  Select next node from story and call showNode
+ * @param {Object} choice
+ */
+const selectChoice = choice => {
+  const node = story[choice.next];
+  showNode(node);
 };
 
 /**
@@ -85,10 +105,13 @@ const displayMessage = () => {
     state.messageToShow = messageArr.join("");
 
     const delay = Math.random() * 100 + 100;
-    setTimeout(displayMessage, delay);
+    state.intervalId = setTimeout(displayMessage, delay);
   }
 };
 
+/**
+ * Clears the display (textElement)
+ */
 const clearMessage = () => (textElement.textContent = "");
 
 /**
@@ -101,9 +124,14 @@ const toggleTypewriter = e => {
   } else {
     state = { ...state, applyTypewriter: false };
   }
-  console.log(state);
 };
 
-typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);
+const updatePlayer = () => {
+  const player = state.player;
+  nameElement.innerText = player.getName();
+  levelElement.innerText = player.getLevel();
+  hpElement.innerText = player.getHP() + "%";
+  mpElement.innerText = player.getMP() + "%";
+}
 
-startGame();
+typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);

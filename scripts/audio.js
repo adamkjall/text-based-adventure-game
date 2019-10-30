@@ -6,7 +6,7 @@ const music = creepyAmbience[0];
 const menuSound = new Audio("./assets/sounds/menu.wav");
 
 /**
- * 
+ *
  */
 export const playMusic = () => {
   music.loop = true;
@@ -16,15 +16,15 @@ export const playMusic = () => {
 };
 
 /**
- * 
+ *
  */
 export const pauseMusic = () => {
   music.pause();
 };
 
 /**
- * 
- * @param {event} e 
+ *
+ * @param {event} e
  */
 const toggleMusic = e => {
   if (e.target.checked) {
@@ -35,8 +35,8 @@ const toggleMusic = e => {
 };
 
 /**
- * 
- * @param {event} e 
+ *
+ * @param {event} e
  */
 export const playChoiceSound = e => {
   menuSound.currentTime = 0;
@@ -46,9 +46,7 @@ export const playChoiceSound = e => {
 };
 
 // Add eventlistener to the sound on off checkbox
-const musicCheckboxElement = document.querySelector(
-  ".options .sound"
-);
+const musicCheckboxElement = document.querySelector(".options .sound");
 musicCheckboxElement.addEventListener("change", toggleMusic);
 
 // Add eventlisteners to the choice buttons

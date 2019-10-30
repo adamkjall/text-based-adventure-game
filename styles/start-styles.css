@@ -1,0 +1,36 @@
+.start {
+  /* height: 30vh; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-form {
+  min-height: 100%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  
+  color: green;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.start-form input[type="submit"] {
+  margin-top: 2rem;
+}
+
+.start-form input[type="text"] {
+  background: green;
+  border: none;
+  outline: none;
+
+  font-weight: bold;
+  padding: .3rem 0.3rem;
+  margin-top: 0.3rem;
+}
+
+
+
