@@ -3,13 +3,12 @@
   padding: 1rem;
   margin-top: 1.5rem;
   border: 2px solid green;
-
   
   box-shadow: 2px 2px 7px 0px green;
 }
 
 .prompt .prompt-text {
   height: 100%;
-  color: green;
-  font-size: 1rem;
+  color: rgb(1, 172, 1);
+  font-size: 1.3rem;
 }
