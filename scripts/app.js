@@ -29,7 +29,7 @@ const capitalize = str => {
   const words = str.split(" ");
   words.forEach((word, i) => {
     let uppercaseFirstLetter = word.charAt(0).toUpperCase();
-    let stringWithoutFirstLetter = word.slice(1);
+    let stringWithoutFirstLetter = word.slice(1).toLowerCase();
     words[i] = uppercaseFirstLetter + stringWithoutFirstLetter;
   });
   return words.join(" ");

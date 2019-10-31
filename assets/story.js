@@ -10,7 +10,7 @@ export const story = {
       },
       {
         text: "Undersök saken",
-        next: "undersök"
+        next: "start"
       },
     ]
   },
