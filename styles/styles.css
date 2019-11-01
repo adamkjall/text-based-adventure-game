@@ -36,7 +36,7 @@ h1 {
 }
 
 .wrapper {
-  max-width: 43rem;
+  max-width: 45rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +48,22 @@ h1 {
 
 .hide {
   display: none !important;
+}
+
+input[type="text"] {
+  width: 100%;
+
+  background: green;
+  border: none;
+  outline: none;
+
+  font-weight: bold;
+  padding: .3rem 0.3rem;
+  margin-top: 0.3rem;
+}
+
+::placeholder {
+  color: black;
 }
 
 

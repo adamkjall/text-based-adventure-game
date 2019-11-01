@@ -1,56 +1,118 @@
 export const story = {
-  start: {
+  spela: {
     message:
-      "Alla barn på Havsörnen, lyssna noga! Era fröknar är inte dom ni tror dom är..." 
-      + " Nu är det upp till er att välja!",
+      "Alla på Havsörnen, hjälp! Skolan är omringad av zombier och vi i klass 4b kommer inte härifrån. Hjälp oss!",
     choices: [
       {
-        text: "Var som vanligt",
-        next: "vanligt"
+        text: "Hjälp till",
+        next: "hjälp"
       },
       {
-        text: "Undersök saken",
-        next: "start"
+        text: "Nej jag vill inte",
+        next: "nej"
       },
     ]
   },
-  vanligt: {
-    message: "Okej, men lita inte på Emelie, Nicole eller Cicci!"
-    + " Speciellt inte när solen gått ner...",
+  hjälp: {
+    message: "Vad snällt! Vi har gömt oss nere i källaren. Skynda dig!",
     choices: [
       {
-        text: "Göm dig",
-        next: "gömställe"
+        text: "Ta trapporna",
+        next: "trapporna"
       },
       {
-        text: "Börja om",
-        next: "start"
+        text: "Ta hissen",
+        next: "hissen"
       }
     ]
   },
-  gömställe: {
-    message: "Du är under soffan. Hoppas att fröknarna inte hittar dig...",
+  hissen: {
+    message: "ÅH NEJ! Det står en zombie i hissen! Du är biten... GAME OVER",
     choices: [
       {
-        text: "Börja om",
-        next: "start"
+        text: "Spela igen",
+        next: "spela"
       }
-     
     ]
   },
-  undersök: {
-    message: "Skönt att ni är så modiga på Havsörnen!"
-    + " Okej, det du och dina kompisar behöver göra först är att ta reda på vad det är som inte stämmer med era fröknar.",
+  trapporna: {
+    message: "Du går ner för trapporna... Ingen zombie första trappan... Ingen zombie andra trappan..."
+    + " Plötsligt ser du en zombie MEN den har inte sett dig än!",
     choices: [
       {
-        text: "Vi tror dom är vampyrer",
-        next: "start"
+        text: "Göm dig i ett klassrum",
+        next: "klassrum"
       },
       {
-        text: "Vi tror dom är zombies",
-        next: "start"
+        text: "Stå helt still",
+        next: "still"
+      }
+    ]
+  },
+  klassrum: {
+    message: "Zombien ser dig inte. Du springer ner till källaren och räddar 4b! YES!",
+    choices: [
+      {
+        text: "Spela igen",
+        next: "spela"
+      }
+    ]
+  },
+  still: {
+    message: "Zombien ser dig inte. Du springer ner till källaren och precis när du ska öppna dörren"
+    + " tar något tag om din fot... Du är biten... GAME OVER",
+    choices: [
+      {
+        text: "Spela igen",
+        next: "spela"
+      }
+    ]
+  },
+  nej: {
+    message: "Taskigt! Då får du klara dig själv när du ska komma undan zombierna!",
+    choices: [
+      {
+        text: "Gå till brandtrappan",
+        next: "brandtrappan"
+      },
+      {
+        text: "Gå till hissen",
+        next: "hissen"
+      }
+    ]
+  },
+  brandtrappan: {
+    message: "Du lyckas ta dig genom korridoren, ner för trappan och ut till brandtrappan."
+    + " Du tar ett steg ut men stannar till! Hela skolgården är full med ZOMBIER!",
+    choices: [
+      {
+        text: "Smyg ner",
+        next: "smyg"
+      },
+      {
+        text: "Kasta en pinne",
+        next: "pinne"
+      }
+    ]
+  },
+  smyg: {
+    message: "Det funkar! Du smyger runt hörnet, lurar zombierna in i skolan och smyger ut igen."
+    + " Sedan tar du din cykel och sticker! Du klarar dig men 4b är fortfarande kvar nere i källaren... GAME OVER",
+    choices: [
+      {
+        text: "Spela igen",
+        next: "spela"
+      }
+    ]
+  },
+  pinne: {
+    message: "Det funkade! Alla zombier springer till pinnen. Du smyger ner MEN precis när du kommer till sista trappsteget"
+    + " tappar du dina nycklar... Alla zombier vänder sig om och springer rakt mot dig! Du är biten... GAME OVER",
+    choices: [
+      {
+        text: "Spela igen",
+        next: "spela"
       }
     ]
   }
-
-};
+}

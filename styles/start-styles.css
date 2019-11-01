@@ -25,17 +25,6 @@
   margin-top: 1rem;
 }
 
-.start-form input[type="text"] {
-  width: 100%;
-
-  background: green;
-  border: none;
-  outline: none;
-
-  font-weight: bold;
-  padding: .3rem 0.3rem;
-  margin-top: 0.3rem;
-}
 
 .start .error-message {
   color: firebrick;

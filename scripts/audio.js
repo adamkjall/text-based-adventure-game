@@ -6,7 +6,7 @@ const music = creepyAmbience[0];
 const menuSound = new Audio("./assets/sounds/menu.wav");
 
 /**
- *
+ * 
  */
 export const playMusic = () => {
   music.loop = true;

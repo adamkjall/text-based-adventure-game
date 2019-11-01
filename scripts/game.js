@@ -10,7 +10,6 @@ const typeWriterCheckboxElement = document.querySelector(
 );
 const choicesElement = document.querySelector(".choices");
 const inputElement = document.querySelector(".choices .input-choice");
-const choiceButtonElement = document.querySelector('.choices .button-choice');
 /* Player stats elements */
 const nameElement = document.querySelector(".player-info .name");
 const hpElement = document.querySelector(".player-info .hp");
@@ -18,8 +17,8 @@ const mpElement = document.querySelector(".player-info .mp");
 const levelElement = document.querySelector(".player-info .level");
 
 const initialState = {
-  node: story.start,
-  messageToShow: story.start.message,
+  node: story.spela,
+  messageToShow: story.spela.message,
   applyTypewriter: true,
   intervalId: "",
   input: ""
@@ -53,9 +52,13 @@ const showNode = node => {
     messageToShow: node.message
   };
 
+  const alternatives = state.node.choices.map(choice => {
+    return " " + choice.text;
+  });
+  inputElement.placeholder = "[" + alternatives + " ]";
+
   updatePlayer();
 
-  // clearInterval(state.intervalId);
   clearMessage();
   displayMessage();
 };
@@ -65,19 +68,13 @@ const showNode = node => {
  * @param {Object} choice
  */
 const selectChoice = choice => {
-  console.log("choice input", choice);
-  console.log("wop",state.node.choices[0].text);
-  
-  const isChoice = state.node.choices.find(
-    item => item.next === choice
-    );
-  console.log("obj", isChoice);
-  
+  const isChoice = state.node.choices.find(item => choice.includes(item.next));
+
   if (isChoice) {
-    const node = story[choice];
+    const next = isChoice.next;
+    const node = story[next];
     showNode(node);
   }
-
 };
 
 /**
@@ -99,6 +96,7 @@ const displayMessage = () => {
     state.messageToShow = messageArr.join("");
 
     const delay = Math.random() * 100 + 100;
+    clearInterval(state.intervalId);
     state.intervalId = setTimeout(displayMessage, delay);
   }
 };
@@ -130,8 +128,8 @@ const updatePlayer = () => {
 
 const submitInput = e => {
   e.preventDefault();
-  const input = inputElement.value;
-  inputElement.value = ""
+  const input = inputElement.value.toLowerCase();
+  inputElement.value = "";
 
   selectChoice(input);
 };
