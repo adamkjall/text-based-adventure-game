@@ -1,25 +1,35 @@
 import { startGame } from "./game.js";
 
+/* Elements */
 const startElement = document.querySelector(".start");
 const inputElement = document.querySelector(".start input.player-name");
 const errorMessageElement = document.querySelector(".start .error-message")
 
+/**
+ * Start of the application
+ * @param {Event} e submit event
+ */
 const start = e => {
   e.preventDefault(); // prevent page reload
-  const input = inputElement.value;
+  const name = inputElement.value;
+  inputElement.value = ""; // clear the input
 
-  if (!validInput(input)) {
+  if (!validName(name)) {
     errorMessageElement.innerText = "Name is too long"
     return;
   }
 
-  startElement.classList.add("hide");
-  const playerName = capitalize(input);
+  startElement.classList.add("hide"); // hide the start screen
+  const playerName = capitalize(name); // Capitalize the players name
+
   startGame(playerName);
-  inputElement.value = ""; // clear the input
 };
 
-const validInput = input => input.length < 16;
+/**
+ * Checks if the name is valid
+ * @param {String} name name of player
+ */
+const validName = name => name.length < 16;
 
 /**
  *  Capitalize every word in a given string
@@ -35,5 +45,5 @@ const capitalize = str => {
   return words.join(" ");
 };
 
-// inputElement.addEventListener("input", checkInput);
+/* Event listeners */
 startElement.addEventListener("submit", start);

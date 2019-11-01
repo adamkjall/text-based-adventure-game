@@ -1,4 +1,3 @@
-import { playChoiceSound } from "./audio.js";
 import { story } from "../assets/story.js";
 import Player from "./player.js";
 
@@ -27,6 +26,10 @@ const initialState = {
 /* The game state */
 let state = {};
 
+/**
+ * Starts the game
+ * @param {String} name Name of the player
+ */
 export const startGame = name => {
   const player = Player(name);
 
@@ -36,12 +39,14 @@ export const startGame = name => {
   // Show the game
   gameElement.classList.remove("hide");
 
-  // Sets the html elements to show the player info
-  updatePlayer();
   // Show first node
   showNode(state.node);
 };
 
+/**
+ *
+ * @param {Object} node Node to be shown
+ */
 const showNode = node => {
   if (!node) return;
 
@@ -52,11 +57,9 @@ const showNode = node => {
     messageToShow: node.message
   };
 
-  const alternatives = state.node.choices.map(choice => {
-    return " " + choice.text;
-  });
-  inputElement.placeholder = "[" + alternatives + " ]";
+  showChoices();
 
+  // Sets the html elements to show the player info
   updatePlayer();
 
   clearMessage();
@@ -64,11 +67,21 @@ const showNode = node => {
 };
 
 /**
- *  Select next node from story and call showNode
- * @param {Object} choice
+ * Displays the choices in the input field
  */
-const selectChoice = choice => {
-  const isChoice = state.node.choices.find(item => choice.includes(item.next));
+const showChoices = () => {
+  const alternatives = state.node.choices.map(choice => {
+    return " " + choice.text;
+  });
+  inputElement.placeholder = "[" + alternatives + " ]";
+};
+
+/**
+ *  Select the next node from the story
+ * @param {String} input Input string from the user
+ */
+const selectChoice = input => {
+  const isChoice = state.node.choices.find(item => input.includes(item.next));
 
   if (isChoice) {
     const next = isChoice.next;
@@ -78,37 +91,52 @@ const selectChoice = choice => {
 };
 
 /**
- * Displays the current game message with a
- * typewriter effect
+ * Displays the current game message, either the entire message
+ * or one character at the time, trying to achieve a typewriter
+ * effect
  */
 const displayMessage = () => {
   if (!state.applyTypewriter) {
-    textElement.textContent += state.messageToShow;
-    state.messageToShow = "";
-    return;
+    showMessage();
+    return; // return to stop the typewriter effect
   }
-  if (state.messageToShow) {
-    const messageArr = state.messageToShow.split("");
-    const char = messageArr.shift();
-
-    textElement.textContent += char;
-
-    state.messageToShow = messageArr.join("");
-
-    const delay = Math.random() * 100 + 100;
-    clearInterval(state.intervalId);
-    state.intervalId = setTimeout(displayMessage, delay);
+  else if (state.messageToShow) {
+    showOneCharOfMessage();
   }
+ 
+  clearInterval(state.intervalId);
+  const delay = Math.random() * 100 + 100;
+  state.intervalId = setTimeout(displayMessage, delay);
 };
 
 /**
- * Clears the display (textElement)
+ * Show the remaining message of messageToShow
+ */
+const showMessage = () => {
+  textElement.textContent += state.messageToShow;
+  state.messageToShow = "";
+};
+
+/**
+ * Show the first char of the messageToShow and 
+ * remove it from messageToShow
+ */
+const showOneCharOfMessage = () => {
+  const messageArr = state.messageToShow.split("");
+  const char = messageArr.shift();
+
+  textElement.textContent += char;
+  state.messageToShow = messageArr.join("");
+};
+
+/**
+ * Clears the message in the textElement
  */
 const clearMessage = () => (textElement.textContent = "");
 
 /**
- *
- * @param {event} e
+ *  Toggle the typewriter effect
+ * @param {event} e Change event from checkbox
  */
 const toggleTypewriter = e => {
   if (e.target.checked) {
@@ -118,6 +146,9 @@ const toggleTypewriter = e => {
   }
 };
 
+/**
+ * Update the html elements according to the player object
+ */
 const updatePlayer = () => {
   const player = state.player;
   nameElement.innerText = player.getName();
@@ -126,13 +157,20 @@ const updatePlayer = () => {
   mpElement.innerText = player.getMP() + "%";
 };
 
+/**
+ * Take the input from the player and pass it to the
+ * selectChoice function
+ * @param {Event} e Submit event
+ */
 const submitInput = e => {
   e.preventDefault();
+
   const input = inputElement.value.toLowerCase();
   inputElement.value = "";
 
   selectChoice(input);
 };
 
+// Event listeners
 typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);
 choicesElement.addEventListener("submit", submitInput);

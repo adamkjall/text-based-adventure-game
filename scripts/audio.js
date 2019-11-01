@@ -3,10 +3,9 @@ const creepyAmbience = [
   new Audio("./assets/sounds/creepy-soundscape.wav")
 ];
 const music = creepyAmbience[0];
-const menuSound = new Audio("./assets/sounds/menu.wav");
 
 /**
- * 
+ * Play the audio in the music variable
  */
 export const playMusic = () => {
   music.loop = true;
@@ -16,15 +15,15 @@ export const playMusic = () => {
 };
 
 /**
- *
+ * Pause the audio in the music variable
  */
 export const pauseMusic = () => {
   music.pause();
 };
 
 /**
- *
- * @param {event} e
+ *  Toggle music on and off
+ * @param {Event} e change event from checkbox
  */
 const toggleMusic = e => {
   if (e.target.checked) {
@@ -34,23 +33,6 @@ const toggleMusic = e => {
   }
 };
 
-/**
- *
- * @param {event} e
- */
-export const playChoiceSound = e => {
-  menuSound.currentTime = 0;
-  menuSound.volume = 0.1;
-  menuSound.type = "audio/wav";
-  menuSound.play().catch(error => console.log(error));
-};
-
-// Add eventlistener to the sound on off checkbox
+// Add eventlistener to the music toggle checkbox
 const musicCheckboxElement = document.querySelector(".options .sound");
 musicCheckboxElement.addEventListener("change", toggleMusic);
-
-// Add eventlisteners to the choice buttons
-const choiceButtons = document.querySelectorAll(".choices .btn");
-choiceButtons.forEach(button =>
-  button.addEventListener("click", playChoiceSound)
-);
