@@ -1,14 +1,19 @@
 import { story } from "../assets/story.js";
 import Player from "./player.js";
+import { toggleMusic } from "../scripts/audio.js";
 
 /* Elements */
 const gameElement = document.querySelector(".game");
 const textElement = document.querySelector(".prompt .prompt-text");
+const choicesElement = document.querySelector(".choices");
+const inputElement = document.querySelector(".choices .input-choice");
+
+/* Option checkboxes */
 const typeWriterCheckboxElement = document.querySelector(
   ".options .typewriter"
 );
-const choicesElement = document.querySelector(".choices");
-const inputElement = document.querySelector(".choices .input-choice");
+const musicCheckboxElement = document.querySelector(".options .sound");
+
 /* Player stats elements */
 const nameElement = document.querySelector(".player-info .name");
 const hpElement = document.querySelector(".player-info .hp");
@@ -99,11 +104,10 @@ const displayMessage = () => {
   if (!state.applyTypewriter) {
     showMessage();
     return; // return to stop the typewriter effect
-  }
-  else if (state.messageToShow) {
+  } else if (state.messageToShow) {
     showOneCharOfMessage();
   }
- 
+
   clearInterval(state.intervalId);
   const delay = Math.random() * 100 + 100;
   state.intervalId = setTimeout(displayMessage, delay);
@@ -118,7 +122,7 @@ const showMessage = () => {
 };
 
 /**
- * Show the first char of the messageToShow and 
+ * Show the first char of the messageToShow and
  * remove it from messageToShow
  */
 const showOneCharOfMessage = () => {
@@ -174,3 +178,4 @@ const submitInput = e => {
 // Event listeners
 typeWriterCheckboxElement.addEventListener("change", toggleTypewriter);
 choicesElement.addEventListener("submit", submitInput);
+musicCheckboxElement.addEventListener("change", toggleMusic);

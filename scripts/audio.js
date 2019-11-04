@@ -7,7 +7,7 @@ const music = creepyAmbience[0];
 /**
  * Play the audio in the music variable
  */
-export const playMusic = () => {
+const playMusic = () => {
   music.loop = true;
   music.volume = 0.2;
   music.type = "audio/wav";
@@ -17,7 +17,7 @@ export const playMusic = () => {
 /**
  * Pause the audio in the music variable
  */
-export const pauseMusic = () => {
+const pauseMusic = () => {
   music.pause();
 };
 
@@ -25,14 +25,10 @@ export const pauseMusic = () => {
  *  Toggle music on and off
  * @param {Event} e change event from checkbox
  */
-const toggleMusic = e => {
+export const toggleMusic = e => {
   if (e.target.checked) {
     playMusic();
   } else {
     pauseMusic();
   }
 };
-
-// Add eventlistener to the music toggle checkbox
-const musicCheckboxElement = document.querySelector(".options .sound");
-musicCheckboxElement.addEventListener("change", toggleMusic);
