@@ -1,0 +1,35 @@
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.1rem;
+  }
+
+  .start {
+    width: 14rem;
+  }
+
+  .player-info {
+    width:100%;
+    min-width: 0;
+  }
+
+  .player-info .avatar-container {
+    width: 4.5rem;
+  }
+
+  .player-info .name {
+    font-size: 1rem;
+  }
+
+  .player-info .hp, .mp {
+    padding: 0.1rem;
+  }
+
+  .options {
+    display: none;
+  }
+
+  .prompt {
+    max-height: 12rem;
+    padding: 0.5rem;
+  }
+}
