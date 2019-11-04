@@ -20,6 +20,9 @@ const hpElement = document.querySelector(".player-info .hp");
 const mpElement = document.querySelector(".player-info .mp");
 const levelElement = document.querySelector(".player-info .level");
 
+/**
+ * The initial state of the game
+ */
 const initialState = {
   node: story.spela,
   messageToShow: story.spela.message,
@@ -49,8 +52,8 @@ export const startGame = name => {
 };
 
 /**
- *
- * @param {Object} node Node to be shown
+ * Display a node("room") from story.js to the user
+ * @param {Object} node Node("room") to be shown
  */
 const showNode = node => {
   if (!node) return;

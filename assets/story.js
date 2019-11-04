@@ -1,3 +1,7 @@
+/**
+ * The story object contains all the text data
+ * the game needs.
+ */
 export const story = {
   spela: {
     message:
